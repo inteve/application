@@ -1,0 +1,19 @@
+{
+	"name": "inteve/application",
+	"description": "Helper classes Nette\\Application",
+	"type": "library",
+	"license": "BSD-3",
+	"authors": [
+		{
+			"name": "Jan Pecha",
+			"email": "janpecha@email.cz"
+		}
+	],
+	"autoload": {
+		"classmap": ["src/"]
+	},
+	"require": {
+		"php": ">=5.4.0",
+		"nette/application": "^2.2"
+	}
+}
