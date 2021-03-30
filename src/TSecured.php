@@ -28,7 +28,7 @@
 				} elseif ($message !== NULL) {
 					$this->flashMessage($message);
 				}
-				$this->redirect($presenter, array('backlink' => $this->storeRequest()));
+				$this->redirect($presenter, ['backlink' => $this->storeRequest()]);
 			}
 		}
 
