@@ -15,6 +15,10 @@
 		}
 
 
+		/**
+		 * @param  array<string, string> $mappings
+		 * @return void
+		 */
 		public static function register(ContainerBuilder $builder, array $mappings)
 		{
 			$presenterFactoryName = $builder->getByType(IPresenterFactory::class);
