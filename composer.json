@@ -17,6 +17,9 @@
 		"nette/application": "^2.4"
 	},
 	"require-dev": {
-		"nette/di": "^2.4"
+		"nette/bootstrap": "^2.4",
+		"nette/di": "^2.4",
+		"nette/tester": "^2.0",
+		"latte/latte": "^2.4"
 	}
 }
