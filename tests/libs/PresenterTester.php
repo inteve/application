@@ -43,6 +43,16 @@
 
 
 		/**
+		 * @return void
+		 */
+		public function loginUser(Nette\Security\IIdentity $identity)
+		{
+			$user = $this->container->getByType(Nette\Security\User::class);
+			$user->login($identity);
+		}
+
+
+		/**
 		 * @param  string $tempDirectory
 		 * @param  string[] $configFiles
 		 * @return self
