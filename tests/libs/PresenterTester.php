@@ -53,6 +53,15 @@
 
 
 		/**
+		 * @return Nette\Application\IPresenterFactory
+		 */
+		public function getPresenterFactory()
+		{
+			return $this->container->getByType(Nette\Application\IPresenterFactory::class);
+		}
+
+
+		/**
 		 * @param  string $tempDirectory
 		 * @param  string[] $configFiles
 		 * @return self
