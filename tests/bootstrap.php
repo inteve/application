@@ -19,7 +19,7 @@ function createPresenterTest(array $configFiles = [])
 	];
 
 	return \Inteve\Application\Tests\Libs\PresenterTester::create(
-		__DIR__ . '/temp/',
+		__DIR__ . '/temp/' . \Nette\Utils\Random::generate(10),
 		array_merge($defaultFiles, $configFiles)
 	);
 }
