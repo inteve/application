@@ -1,2 +1,6 @@
 application:
 	scanDirs: false
+
+
+services:
+	router: Nette\Application\Routers\SimpleRouter
