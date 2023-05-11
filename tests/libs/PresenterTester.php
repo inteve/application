@@ -43,43 +43,10 @@
 
 
 		/**
-		 * @return void
-		 */
-		public function loginUser(Nette\Security\IIdentity $identity)
-		{
-			$user = $this->container->getByType(Nette\Security\User::class);
-			$user->login($identity);
-		}
-
-
-		/**
 		 * @return Nette\Application\IPresenterFactory
 		 */
 		public function getPresenterFactory()
 		{
 			return $this->container->getByType(Nette\Application\IPresenterFactory::class);
-		}
-
-
-		/**
-		 * @param  string $tempDirectory
-		 * @param  string[] $configFiles
-		 * @return self
-		 */
-		public static function create(
-			$tempDirectory,
-			array $configFiles
-		)
-		{
-			$configurator = new Nette\Configurator;
-
-			$configurator->setTempDirectory($tempDirectory);
-
-			foreach ($configFiles as $configFile) {
-				$configurator->addConfig($configFile);
-			}
-
-			$container = $configurator->createContainer();
-			return new self($container);
 		}
 	}

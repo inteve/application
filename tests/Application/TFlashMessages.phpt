@@ -23,9 +23,9 @@ class FlashMessagesTestPresenter extends \Nette\Application\UI\Presenter
 	}
 }
 
-$presenterTester = createPresenterTest();
 
-test(function () use ($presenterTester) {
+test(function () {
+	$presenterTester = createPresenterTester();
 	$request = $presenterTester->createRequest('FlashMessagesTest');
 
 	$response = $presenterTester->run($request);
@@ -53,5 +53,4 @@ test(function () use ($presenterTester) {
 			'type' => 'warning',
 		],
 	], $response->getPayload());
-
 });

@@ -17,12 +17,10 @@ class PresenterMappingExtension extends \Nette\DI\CompilerExtension
 }
 
 
-$presenterTester = createPresenterTest([
-	__DIR__ . '/PresenterMapping.neon',
-]);
-
-
-test(function () use ($presenterTester) {
+test(function () {
+	$presenterTester = createPresenterTester([
+		__DIR__ . '/PresenterMapping.neon',
+	]);
 	$presenterFactory = $presenterTester->getPresenterFactory();
 
 	Assert::type(\Nette\Application\PresenterFactory::class, $presenterFactory);
