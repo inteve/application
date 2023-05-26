@@ -25,6 +25,11 @@
 
 			if ($presenterFactoryName !== NULL) {
 				$definition = $builder->getDefinition($presenterFactoryName);
+
+				if (!($definition instanceof \Nette\DI\Definitions\ServiceDefinition) && !(method_exists($definition, 'getFactory') && method_exists($definition, 'addSetup'))) {
+					return;
+				}
+
 				$definitionFactory = $definition->getFactory();
 
 				if ($definitionFactory !== NULL && $definitionFactory->entity === PresenterFactory::class) {

@@ -44,7 +44,24 @@
 		{
 			$userStorage = $user->getStorage();
 
-			if ($userStorage instanceof Nette\Http\UserStorage) {
+			if ($userStorage instanceof Nette\Bridges\SecurityHttp\SessionStorage) {
+				$currentTime = new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
+				$namespace = $userStorage->getNamespace();
+
+				// change authTime & expireTime to past
+				$session = $this->container->getByType(Nette\Http\Session::class);
+				$sessionSection = $session->getSection('Nette.Http.UserStorage/' . $namespace);
+
+				$sessionSection->authTime = (int) $currentTime->sub(new \DateInterval('P7D'))->format('U');
+				$sessionSection->expireTime = $sessionSection->authTime + 5;
+				$sessionSection->expireDelta = 5;
+
+				// refresh session & user
+				$userStorage->setNamespace($namespace . '-' . Nette\Utils\Random::generate(10));
+				$userStorage->setNamespace($namespace);
+				$user->refreshStorage();
+
+			} elseif ($userStorage instanceof Nette\Http\UserStorage) { // DEPRECATED: for Nette ^2.4
 				$currentTime = new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
 				$namespace = $userStorage->getNamespace();
 

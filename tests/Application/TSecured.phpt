@@ -50,8 +50,47 @@ test(function () {
 
 
 test(function () {
+	if (!class_exists(\Nette\Security\SimpleIdentity::class)) {
+		return;
+	}
+
+	$applicationTester = createApplicationTester();
+	$applicationTester->loginUser(new \Nette\Security\SimpleIdentity(1));
+
+	$presenterTester = $applicationTester->createPresenterTester();
+	$request = $presenterTester->createRequest('SecuredTest');
+
+	$response = $presenterTester->run($request);
+	Assert::type(\Nette\Application\Responses\JsonResponse::class, $response);
+
+	Assert::same(['success' => TRUE], $response->getPayload());
+});
+
+
+test(function () {
 	$applicationTester = createApplicationTester();
 	$user = $applicationTester->loginUser(new \Nette\Security\Identity(1));
+	$applicationTester->expireUser($user);
+
+	$presenterTester = $applicationTester->createPresenterTester();
+
+	$request = $presenterTester->createRequest('SecuredTest');
+
+	$response = $presenterTester->run($request);
+	Assert::type(\Nette\Application\Responses\RedirectResponse::class, $response);
+
+	Assert::contains('presenter=SecuredTest', $response->getUrl());
+	Assert::contains('action=signIn', $response->getUrl());
+});
+
+
+test(function () {
+	if (!class_exists(\Nette\Security\SimpleIdentity::class)) {
+		return;
+	}
+
+	$applicationTester = createApplicationTester();
+	$user = $applicationTester->loginUser(new \Nette\Security\SimpleIdentity(1));
 	$applicationTester->expireUser($user);
 
 	$presenterTester = $applicationTester->createPresenterTester();
