@@ -95,6 +95,7 @@
 		{
 			$configurator = new Nette\Configurator;
 
+			\Nette\Utils\FileSystem::createDir($tempDirectory);
 			$configurator->setTempDirectory($tempDirectory);
 
 			foreach ($configFiles as $configFile) {

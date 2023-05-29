@@ -22,6 +22,7 @@
 	"require-dev": {
 		"nette/bootstrap": "^2.4 || ^3.0",
 		"nette/di": "^2.4 || ^3.0",
+		"nette/http": "^2.4 || ^3.0",
 		"nette/tester": "^2.0",
 		"nette/security": "^2.4 || ^3.0",
 		"latte/latte": "^2.4 || ^3.0"
