@@ -77,8 +77,20 @@
 				$userStorage->setNamespace($namespace . '-' . Nette\Utils\Random::generate(10));
 				$userStorage->setNamespace($namespace);
 
+				if (method_exists($user, 'refreshStorage')) {
+					$user->refreshStorage();
+				}
+
 			} else {
 				throw new \RuntimeException('Not implemented for storage ' . get_class($userStorage));
+			}
+		}
+
+
+		public function terminate()
+		{
+			if (session_status() === PHP_SESSION_ACTIVE) {
+				session_destroy(); // for nette/http 3.0.7
 			}
 		}
 

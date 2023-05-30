@@ -24,7 +24,8 @@ class SecuredTestPresenter extends \Nette\Application\UI\Presenter
 
 
 test(function () {
-	$presenterTester = createPresenterTester();
+	$applicationTester = createApplicationTester();
+	$presenterTester = $applicationTester->createPresenterTester();
 	$request = $presenterTester->createRequest('SecuredTest');
 
 	$response = $presenterTester->run($request);
@@ -32,6 +33,7 @@ test(function () {
 
 	Assert::contains('presenter=SecuredTest', $response->getUrl());
 	Assert::contains('action=signIn', $response->getUrl());
+	$applicationTester->terminate();
 });
 
 
@@ -46,6 +48,7 @@ test(function () {
 	Assert::type(\Nette\Application\Responses\JsonResponse::class, $response);
 
 	Assert::same(['success' => TRUE], $response->getPayload());
+	$applicationTester->terminate();
 });
 
 
@@ -64,6 +67,7 @@ test(function () {
 	Assert::type(\Nette\Application\Responses\JsonResponse::class, $response);
 
 	Assert::same(['success' => TRUE], $response->getPayload());
+	$applicationTester->terminate();
 });
 
 
@@ -81,6 +85,7 @@ test(function () {
 
 	Assert::contains('presenter=SecuredTest', $response->getUrl());
 	Assert::contains('action=signIn', $response->getUrl());
+	$applicationTester->terminate();
 });
 
 
@@ -102,4 +107,5 @@ test(function () {
 
 	Assert::contains('presenter=SecuredTest', $response->getUrl());
 	Assert::contains('action=signIn', $response->getUrl());
+	$applicationTester->terminate();
 });
