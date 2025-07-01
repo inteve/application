@@ -1,5 +1,7 @@
 <?php
 
+	declare(strict_types=1);
+
 	namespace Inteve\Application\DI;
 
 	use Nette\Application\IPresenterFactory;
