@@ -20,7 +20,7 @@ Installation
 composer require inteve/application
 ```
 
-Library requires PHP 5.6 or later.
+Library requires PHP 8.0 or later.
 
 ------------------------------
 
