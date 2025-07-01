@@ -57,6 +57,6 @@
 		 */
 		protected function isLoggedOutByInactivity()
 		{
-			return $this->getUser()->getLogoutReason() === \Nette\Http\UserStorage::INACTIVITY;
+			return $this->getUser()->getLogoutReason() === \Nette\Security\User::INACTIVITY;
 		}
 	}
