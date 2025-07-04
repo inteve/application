@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use Inteve\Application\Tests\Libs\PresenterTester;
+
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/libs/ApplicationTester.php';
 require __DIR__ . '/libs/PresenterTester.php';
@@ -9,13 +11,16 @@ require __DIR__ . '/libs/PresenterTester.php';
 Tester\Environment::setup();
 
 
-function test($cb)
+function test(callable $cb): void
 {
 	$cb();
 }
 
 
-function createApplicationTester(array $configFiles = [])
+/**
+ * @param  list<string> $configFiles
+ */
+function createApplicationTester(array $configFiles = []): \Inteve\Application\Tests\Libs\ApplicationTester
 {
 	$defaultFiles = [
 		__DIR__ . '/bootstrap.neon',
@@ -28,7 +33,10 @@ function createApplicationTester(array $configFiles = [])
 }
 
 
-function createPresenterTester(array $configFiles = [])
+/**
+ * @param  list<string> $configFiles
+ */
+function createPresenterTester(array $configFiles = []): PresenterTester
 {
 	$applicationTester = createApplicationTester($configFiles);
 	return $applicationTester->createPresenterTester();

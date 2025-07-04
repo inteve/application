@@ -26,6 +26,7 @@ test(function () {
 	$presenterFactory = $presenterTester->getPresenterFactory();
 
 	Assert::type(\Nette\Application\PresenterFactory::class, $presenterFactory);
+	assert($presenterFactory instanceof \Nette\Application\PresenterFactory);
 
 	Assert::same('NotMappedPresenter', $presenterFactory->formatPresenterClass('NotMapped'));
 	Assert::same('NotMappedModule\FooPresenter', $presenterFactory->formatPresenterClass('NotMapped:Foo'));

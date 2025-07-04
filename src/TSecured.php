@@ -16,9 +16,9 @@
 	trait TSecured
 	{
 		/**
-		 * @param  string
-		 * @param  string|NULL
-		 * @param  string|NULL
+		 * @param  string $presenter
+		 * @param  string|NULL $message
+		 * @param  string|NULL $inactivityMessage
 		 * @return void
 		 */
 		protected function checkUserRelogin($presenter, $message = NULL, $inactivityMessage = NULL)

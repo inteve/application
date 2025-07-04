@@ -8,7 +8,7 @@
 	trait TFlashMessages
 	{
 		/**
-		 * @param  string
+		 * @param  string $message
 		 * @return \stdClass
 		 */
 		public function flashSuccess($message)
@@ -18,7 +18,7 @@
 
 
 		/**
-		 * @param  string
+		 * @param  string $message
 		 * @return \stdClass
 		 */
 		public function flashError($message)
@@ -28,7 +28,7 @@
 
 
 		/**
-		 * @param  string
+		 * @param  string $message
 		 * @return \stdClass
 		 */
 		public function flashWarning($message)

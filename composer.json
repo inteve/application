@@ -26,5 +26,10 @@
 		"nette/tester": "^2.5",
 		"nette/security": "^3.0",
 		"latte/latte": "^2.4 || ^3.0"
+	},
+	"extra": {
+		"phpstan-extensions": [
+			"phpstan/phpstan-nette"
+		]
 	}
 }

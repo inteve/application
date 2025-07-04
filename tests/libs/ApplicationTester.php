@@ -89,7 +89,7 @@
 		}
 
 
-		public function terminate()
+		public function terminate(): void
 		{
 			if (session_status() === PHP_SESSION_ACTIVE) {
 				session_destroy(); // for nette/http 3.0.7

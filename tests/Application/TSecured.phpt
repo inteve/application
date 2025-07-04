@@ -18,7 +18,7 @@ class SecuredTestPresenter extends \Nette\Application\UI\Presenter
 	}
 
 
-	public function actionDefault()
+	public function actionDefault(): void
 	{
 		$this->sendJson(['success' => TRUE]);
 	}
@@ -32,6 +32,7 @@ test(function () {
 
 	$response = $presenterTester->run($request);
 	Assert::type(\Nette\Application\Responses\RedirectResponse::class, $response);
+	assert($response instanceof \Nette\Application\Responses\RedirectResponse);
 
 	Assert::contains('presenter=SecuredTest', $response->getUrl());
 	Assert::contains('action=signIn', $response->getUrl());
@@ -48,6 +49,7 @@ test(function () {
 
 	$response = $presenterTester->run($request);
 	Assert::type(\Nette\Application\Responses\JsonResponse::class, $response);
+	assert($response instanceof \Nette\Application\Responses\JsonResponse);
 
 	Assert::same(['success' => TRUE], $response->getPayload());
 	$applicationTester->terminate();
@@ -67,6 +69,7 @@ test(function () {
 
 	$response = $presenterTester->run($request);
 	Assert::type(\Nette\Application\Responses\JsonResponse::class, $response);
+	assert($response instanceof \Nette\Application\Responses\JsonResponse);
 
 	Assert::same(['success' => TRUE], $response->getPayload());
 	$applicationTester->terminate();
@@ -84,6 +87,7 @@ test(function () {
 
 	$response = $presenterTester->run($request);
 	Assert::type(\Nette\Application\Responses\RedirectResponse::class, $response);
+	assert($response instanceof \Nette\Application\Responses\RedirectResponse);
 
 	Assert::contains('presenter=SecuredTest', $response->getUrl());
 	Assert::contains('action=signIn', $response->getUrl());
@@ -106,6 +110,7 @@ test(function () {
 
 	$response = $presenterTester->run($request);
 	Assert::type(\Nette\Application\Responses\RedirectResponse::class, $response);
+	assert($response instanceof \Nette\Application\Responses\RedirectResponse);
 
 	Assert::contains('presenter=SecuredTest', $response->getUrl());
 	Assert::contains('action=signIn', $response->getUrl());

@@ -11,7 +11,7 @@ class FlashMessagesTestPresenter extends \Nette\Application\UI\Presenter
 	use \Inteve\Application\TFlashMessages;
 
 
-	public function actionDefault()
+	public function actionDefault(): void
 	{
 		$messages = [];
 		$messages[] = $this->flashMessage('message standard');
@@ -32,6 +32,7 @@ test(function () {
 
 	$response = $presenterTester->run($request);
 	Assert::type(\Nette\Application\Responses\JsonResponse::class, $response);
+	assert($response instanceof \Nette\Application\Responses\JsonResponse);
 
 	Assert::equal([
 		(object) [

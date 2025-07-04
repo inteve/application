@@ -22,7 +22,7 @@
 		/**
 		 * @return Nette\Application\Request
 		 */
-		public function createRequest($presenterName, $action = 'default')
+		public function createRequest(string $presenterName, string $action = 'default')
 		{
 			$request = new Nette\Application\Request($presenterName);
 			$request->setMethod('GET');

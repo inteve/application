@@ -34,7 +34,10 @@
 
 				$definitionFactory = $definition->getFactory();
 
-				if ($definitionFactory !== NULL && $definitionFactory->entity === PresenterFactory::class) {
+				if ($definitionFactory !== NULL
+					&& $definitionFactory instanceof \Nette\DI\Definitions\Statement
+					&& $definitionFactory->entity === PresenterFactory::class
+				) {
 					$definition->addSetup('setMapping', [$mappings]);
 				}
 			}
